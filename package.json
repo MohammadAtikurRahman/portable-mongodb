@@ -1,5 +1,5 @@
 {
-  "name": "embededdb",
+  "name": "mongo-lite-server",
   "version": "1.0.0",
   "autho": "Md. Atikur Rahman",
   "description": "Embedded MongoDB facilitates using MongoDB without the need for a separate installation of the MongoDB environment.",
