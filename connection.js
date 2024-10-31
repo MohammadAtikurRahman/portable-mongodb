@@ -1,18 +1,18 @@
 const mongoose = require("mongoose");
 
-async function connectToDatabase() {
+async function connectToDatabase(dbName = "DefaultDatabase") {
   try {
-    // Start MongoMemoryServer and get the connection URI
     const { MongoMemoryServer } = require("mongodb-memory-server");
     const path = require("path");
     const dbPath = path.join(__dirname, "./mongodb-data");
     const binaryPath = path.join(__dirname, "./mongodb-binaries");
 
+    // Set the MongoDB binary path
     process.env.MONGOMS_SYSTEM_BINARY = path.join(binaryPath, "mongod.exe");
 
     const mongod = new MongoMemoryServer({
       instance: {
-        dbName: "Test-Database",
+        dbName,        // Use the database name provided by the user
         dbPath: dbPath,
         storageEngine: "wiredTiger",
         port: 27017,
@@ -35,16 +35,14 @@ async function connectToDatabase() {
 
     // Connect mongoose to the in-memory instance
     await mongoose.connect(mongoUri, {
-      serverSelectionTimeoutMS: 5000, // Timeout after 5 seconds of waiting for connection
-      dbName: "Test-Database", // Specify the database name
-      //   useNewUrlParser: true,
-      //  useUnifiedTopology: true,
+      serverSelectionTimeoutMS: 5000,
+      dbName, // Connect to the specified database name
     });
 
-    console.log("MongoDB connected successfully");
+    console.log(`MongoDB connected successfully to database: ${dbName}`);
   } catch (err) {
     console.error("Error connecting to MongoDB:", err);
-    throw err; // Throw error to handle it in the caller function
+    throw err;
   }
 }
 

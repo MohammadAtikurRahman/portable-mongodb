@@ -1,13 +1,13 @@
 {
-  "name": "mongo-lite-server",
-  "version": "1.0.0",
-  "autho": "Md. Atikur Rahman",
-  "description": "Embedded MongoDB facilitates using MongoDB without the need for a separate installation of the MongoDB environment.",
+"name": "mongo-lite-server-dev",
+"version": "1.0.1-beta",
+  "author": "Md. Atikur Rahman",
+  "description": "A lightweight embedded MongoDB server for Node.js without requiring MongoDB installation.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["mongodb", "portable", "nodejs", "embedded"],
+  "keywords": ["mongodb", "embedded", "lite", "nodejs"],
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
@@ -15,5 +15,12 @@
     "mongodb-memory-server": "^9.4.0",
     "mongoose": "^8.5.0",
     "nodemon": "^3.1.4"
-  }
+  },
+  "files": [
+    "README.md",
+    "connection.js",
+    "index.js",
+    "mongodb-binaries/",
+    "mongodb-data/"
+  ]
 }
