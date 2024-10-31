@@ -1,0 +1,19 @@
+{
+  "name": "embededdb",
+  "version": "1.0.0",
+  "autho": "Md. Atikur Rahman",
+  "description": "Embedded MongoDB facilitates using MongoDB without the need for a separate installation of the MongoDB environment.",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": ["mongodb", "portable", "nodejs", "embedded"],
+  "license": "ISC",
+  "dependencies": {
+    "cors": "^2.8.5",
+    "express": "^4.19.2",
+    "mongodb-memory-server": "^9.4.0",
+    "mongoose": "^8.5.0",
+    "nodemon": "^3.1.4"
+  }
+}
