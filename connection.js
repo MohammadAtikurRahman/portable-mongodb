@@ -1,18 +1,24 @@
 const mongoose = require("mongoose");
+const fs = require("fs");
+const path = require("path");
 
 async function connectToDatabase(dbName = "DefaultDatabase") {
   try {
     const { MongoMemoryServer } = require("mongodb-memory-server");
-    const path = require("path");
     const dbPath = path.join(__dirname, "./mongodb-data");
     const binaryPath = path.join(__dirname, "./mongodb-binaries");
+
+    // Ensure the mongodb-data directory exists
+    if (!fs.existsSync(dbPath)) {
+      fs.mkdirSync(dbPath, { recursive: true });
+    }
 
     // Set the MongoDB binary path
     process.env.MONGOMS_SYSTEM_BINARY = path.join(binaryPath, "mongod.exe");
 
     const mongod = new MongoMemoryServer({
       instance: {
-        dbName,        // Use the database name provided by the user
+        dbName,
         dbPath: dbPath,
         storageEngine: "wiredTiger",
         port: 27017,
@@ -20,10 +26,7 @@ async function connectToDatabase(dbName = "DefaultDatabase") {
       binary: {
         version: "4.0.28",
         downloadDir: binaryPath,
-        mongodBinaryPath: path.join(binaryPath, "mongod.exe"),
-        skipMD5: true,
-        debug: false,
-        autoDownload: false,
+        autoDownload: true, // Use this if you want MongoMemoryServer to handle downloading binaries
       },
       autoStart: false,
     });

@@ -1,6 +1,6 @@
 {
-"name": "mongo-lite-server-dev",
-"version": "1.0.1-beta",
+"name": "mongo-database",
+"version": "1.0.0",
   "author": "Md. Atikur Rahman",
   "description": "A lightweight embedded MongoDB server for Node.js without requiring MongoDB installation.",
   "main": "index.js",
