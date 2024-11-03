@@ -1,13 +1,21 @@
 {
   "name": "portable-mongodb",
-  "version": "1.0.2", 
+  "version": "1.0.3",
   "author": "Md. Atikur Rahman",
   "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node index.js",
+    "postinstall": "echo Note: Installation may take 4-7 minutes due to package size."
   },
-  "keywords": ["mongodb","mongo", "portable", "embedded", "nodejs", "database"],
+  "keywords": [
+    "mongodb",
+    "mongo",
+    "portable",
+    "embedded",
+    "nodejs",
+    "database"
+  ],
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
