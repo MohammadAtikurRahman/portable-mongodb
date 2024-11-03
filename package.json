@@ -1,13 +1,13 @@
 {
-"name": "mongo-database",
-"version": "1.0.0",
+  "name": "portable-mongodb",
+  "version": "1.0.0",
   "author": "Md. Atikur Rahman",
-  "description": "A lightweight embedded MongoDB server for Node.js without requiring MongoDB installation.",
+  "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": ["mongodb", "embedded", "lite", "nodejs"],
+  "keywords": ["mongodb","mongo", "portable", "embedded", "nodejs", "database"],
   "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",

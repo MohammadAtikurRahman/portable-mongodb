@@ -1,10 +1,17 @@
-# mongo-lite-server
+# portable-mongodb
 
-`mongo-lite-server` is a Node.js package for connecting to an embedded MongoDB instance without requiring a separate MongoDB installation. This package is ideal for development and testing.
+**portable-mongodb** is a fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation. This package includes all necessary binaries and data directories, making it easy to integrate a MongoDB server into your Node.js projects with minimal setup.
+
+## Features
+
+- **No Installation Required**: Run MongoDB without needing to download and install it separately.
+- **Embedded MongoDB Server**: Integrated directly into your Node.js application.
+- **Portable**: Easily share and run projects across different environments.
+- **Data Persistence**: Maintain data between sessions without losing information.
 
 ## Installation
 
-Install the package via npm:
+Install the package using npm:
 
 ```bash
-npm install mongo-lite-server
+npm install portable-mongodb
