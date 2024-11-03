@@ -6,7 +6,7 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "postinstall": "echo Note: Installation may take 4-7 minutes due to package size."
+    "postinstall": "node postinstall.js"
   },
   "keywords": [
     "mongodb",

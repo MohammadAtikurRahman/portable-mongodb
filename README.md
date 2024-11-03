@@ -36,7 +36,7 @@ const mongoose = require('mongoose');
 
 async function main() {
   // Connect to the embedded MongoDB server with a specified database name
-  await mongoLite.connectToDatabase("portable-mongodb-database");
+  await portableMongo.connectToDatabase("portable-mongodb-database");
   console.log("Connected to the portable MongoDB database.");
 
   // Define a schema and model
