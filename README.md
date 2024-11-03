@@ -19,6 +19,8 @@ Install the package using npm:
 npm install portable-mongodb
 
 ```
+Note: The installation of portable-mongodb may take approximately 4-7 minutes depending on your internet speed and system performance. This is due to the package size, as it includes essential MongoDB binaries to run an embedded MongoDB instance.
+
 ## Required Packages
 
 
