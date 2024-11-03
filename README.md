@@ -58,3 +58,23 @@ async function main() {
 main().catch(console.error);
 
 ```
+
+## Contributing
+
+Contributions are welcome! If you find any issues or have feature requests, please feel free to open an issue or submit a pull request.
+
+## License
+
+This project is licensed under the ISC License.
+
+## Author
+
+Developed by **Md. Atikur Rahman**.
+
+## Support
+
+For any questions or support, you can reach out via [GitHub Issues](https://github.com/MohammadAtikurRahman/portable-mongodb/issues).
+
+---
+
+Thank you for using **Portable Mongodb**! We hope it simplifies your development process.
