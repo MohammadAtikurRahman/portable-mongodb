@@ -1,6 +1,6 @@
 # Portable Mongodb
 
-**portable-mongodb** is a fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation. This package includes all necessary binaries and data directories, making it easy to integrate a MongoDB server into your Node.js projects with minimal setup.
+**Portable Mongodb** is a fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation. This package includes all necessary binaries and data directories, making it easy to integrate a MongoDB server into your Node.js projects with minimal setup.
 
 ## Features
 
@@ -17,6 +17,13 @@ Install the package using npm:
 
 ```bash
 npm install portable-mongodb
+
+```
+## Required Packages
+
+
+```bash
+npm install mongoose
 
 ```
 
