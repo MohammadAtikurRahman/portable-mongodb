@@ -1,6 +1,6 @@
 {
   "name": "portable-mongodb",
-  "version": "1.0.7",
+  "version": "1.0.8",
   "author": "Md. Atikur Rahman",
   "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
   "main": "index.js",
@@ -32,6 +32,6 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/MohammadAtikurRahman/portable-mongodb.git"
+    "url": "git+https://github.com/MohammadAtikurRahman/portable-mongodb.git"
   }
 }
