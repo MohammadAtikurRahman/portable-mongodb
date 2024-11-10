@@ -1,6 +1,6 @@
 {
   "name": "portable-mongodb",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "author": "Md. Atikur Rahman",
   "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
   "main": "index.js",
