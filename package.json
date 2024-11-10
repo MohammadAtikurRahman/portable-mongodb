@@ -1,6 +1,6 @@
 {
   "name": "portable-mongodb",
-  "version": "1.0.10",
+  "version": "1.0.8",
   "author": "Md. Atikur Rahman",
   "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
   "main": "index.js",
@@ -15,7 +15,7 @@
     "nodejs",
     "database"
   ],
-  "license": "MIT",
+  "license": "ISC",
   "dependencies": {
     "cors": "^2.8.5",
     "express": "^4.19.2",
