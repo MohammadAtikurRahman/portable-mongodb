@@ -6,13 +6,16 @@ async function connectToDatabase(dbName = "DefaultDatabase") {
   try {
     const { MongoMemoryServer } = require("mongodb-memory-server");
     const dbPath = path.join(__dirname, "./mongodb-data");
+    const binaryPath = path.join(__dirname, "./mongodb-binaries");
 
     // Ensure the mongodb-data directory exists
     if (!fs.existsSync(dbPath)) {
       fs.mkdirSync(dbPath, { recursive: true });
     }
 
-    // Initialize MongoMemoryServer without specifying `MONGOMS_SYSTEM_BINARY`
+    // Set the MongoDB binary path
+    process.env.MONGOMS_SYSTEM_BINARY = path.join(binaryPath, "mongod.exe");
+
     const mongod = new MongoMemoryServer({
       instance: {
         dbName,
@@ -22,7 +25,8 @@ async function connectToDatabase(dbName = "DefaultDatabase") {
       },
       binary: {
         version: "4.0.28",
-        autoDownload: true, // Enable autoDownload for cross-platform support
+        downloadDir: binaryPath,
+        autoDownload: true, // Use this if you want MongoMemoryServer to handle downloading binaries
       },
       autoStart: false,
     });
