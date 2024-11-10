@@ -10,6 +10,25 @@
 - **Data Persistence**: Maintain data between sessions without losing information.
 - **No Environment Setup Required**: No need to set up environment variables on Windows.
 
+## Compatibility and Supported Environments
+
+This project uses `mongodb-memory-server` to run an embedded MongoDB instance with a specified binary version and path. The configuration relies on the `mongod.exe` binary path and `autoDownload` for automatic binary fetching, but certain OS restrictions apply.
+
+### Supported Environments
+
+| Operating System           | Notes                                                                                                       |
+|----------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Windows**                | Fully supported as `process.env.MONGOMS_SYSTEM_BINARY` explicitly points to `mongod.exe`, a Windows binary. |
+| **MacOS (Intel)**          | Supported if `autoDownload` successfully fetches a compatible MongoDB binary for MacOS.                     |
+| **Linux (up to Debian 11)** | Supported on older Linux distributions that offer MongoDB binaries below version `7.0.3`.                   |
+
+### Not Supported Environments
+
+| Operating System                    | Reason                                                                                                      |
+|-------------------------------------|-------------------------------------------------------------------------------------------------------------|
+| **Linux (Debian 12+)**              | MongoDB does not provide binaries for versions before `7.0.3` on Debian 12+. The specified version `4.0.28` will not work. |
+| **MacOS (Apple Silicon)**           | May not be supported due to lack of compatibility with older MongoDB binaries (version `4.0.28`).           |
+| **Cloud-based Environments** (e.g., CodeSandbox, Repl.it) | These often run Linux-based containers that may not support `mongod.exe` directly and require Linux-compatible binaries.  |
 
 ## Installation
 
