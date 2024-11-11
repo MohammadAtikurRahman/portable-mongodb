@@ -10,10 +10,24 @@
   "keywords": [
     "mongodb",
     "mongo",
-    "portable",
-    "embedded",
+    "portable-mongodb",
+    "mongodb-portable",
     "nodejs",
-    "database"
+    "mongodb-database",
+    "in-memory-database",
+    "mongodb-memory-server",
+    "mock-database",
+    "test-database",
+    "database-testing",
+    "mongodb-testing",
+    "mongo-embedded",
+    "node-mongodb",
+    "mock-mongodb",
+    "mongodb-integration",
+    "lightweight-database",
+    "testing-tools",
+    "ci-cd",
+    "automated-testing"
   ],
   "license": "MIT",
   "dependencies": {

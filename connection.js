@@ -24,7 +24,7 @@ async function connectToDatabase(dbName = "DefaultDatabase") {
         port: 27017,
       },
       binary: {
-        version: "4.0.28",
+        version: "7.0.15",
         downloadDir: binaryPath,
         autoDownload: true, // Use this if you want MongoMemoryServer to handle downloading binaries
       },
