@@ -1,37 +1,19 @@
 {
   "name": "portable-mongodb",
-  "version": "1.0.14",
-  "author": "Md. Atikur Rahman",
-  "description": "A fully portable MongoDB server for Node.js that runs without requiring separate MongoDB installation.",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "start": "node index.js"
   },
-  "keywords": [
-    "mongodb",
-    "mongo",
-    "portable",
-    "embedded",
-    "nodejs",
-    "database"
-  ],
-  "license": "MIT",
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "cors": "^2.8.5",
-    "express": "^4.19.2",
-    "mongodb-memory-server": "^9.4.0",
-    "mongoose": "^8.5.0",
-    "nodemon": "^3.1.4"
-  },
-  "files": [
-    "README.md",
-    "connection.js",
-    "index.js",
-    "mongodb-binaries/",
-    "mongodb-data/"
-  ],
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/MohammadAtikurRahman/portable-mongodb.git"
+    "mongodb-memory-server": "^10.1.2",
+    "nodemon": "^3.1.7",
+    "mongodb": "^5.0.0",
+    "mongoose": "^7.0.0"
   }
 }
