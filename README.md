@@ -37,36 +37,43 @@ npm install portable-mongodb
 ```
 Note: The installation of portable-mongodb may take approximately 4-7 minutes depending on your internet speed and system performance. This is due to the package size, as it includes essential MongoDB binaries to run an embedded MongoDB instance.
 
+## Required Packages
+
+
+```bash
+npm install mongoose
+
+```
+
 
 ```js
 const portableMongo = require('portable-mongodb');
+const mongoose = require('mongoose');
 
 async function main() {
-  // Define the configuration for the MongoDB instance
-  const dbConfig = {
-    dbName: 'myCustomDatabase', // Custom database name
-    port: 27017,                // Custom port
-    storageEngine: 'wiredTiger' // Custom storage engine (default: "wiredTiger")
-  };
+  // Connect to the embedded MongoDB server with a specified database name
+  await portableMongo.connectToDatabase("portable-mongodb-database");
+  console.log("Connected to the portable MongoDB database.");
 
-  // Run all database operations inside `withDatabase` using custom configuration
-  await portableMongo.withDatabase(dbConfig, async (mongoose) => {
-    // Define a Mongoose schema and model
-    const TestSchema = new mongoose.Schema({ message: String });
-    const TestModel = mongoose.model('Test', TestSchema);
-
-    // Insert a "Hello World" document
-    const result = await TestModel.create({ message: 'Hello World' });
-    console.log(`Inserted document with _id: ${result._id}`);
-
-    // Retrieve the "Hello World" document
-    const document = await TestModel.findOne({ message: 'Hello World' });
-    console.log('Found document:', document);
+  // Define a schema and model
+  const messageSchema = new mongoose.Schema({
+    message: String
   });
+
+  const Message = mongoose.model("Message", messageSchema);
+
+  // Insert a document with the message: "allahu akbar"
+  const newMessage = new Message({ message: "Hello World" });
+  await newMessage.save();
+
+  console.log("Message inserted:", newMessage);
+
+  // Retrieve and print the document to confirm it was added
+  const messages = await Message.find();
+  console.log("Retrieved messages:", messages);
 }
 
 main().catch(console.error);
-
 
 ```
 
