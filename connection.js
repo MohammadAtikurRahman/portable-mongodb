@@ -3,50 +3,68 @@ const fs = require("fs");
 const path = require("path");
 
 async function connectToDatabase(dbName = "DefaultDatabase") {
-  try {
-    const { MongoMemoryServer } = require("mongodb-memory-server");
-    const dbPath = path.join(__dirname, "./mongodb-data");
-    const binaryPath = path.join(__dirname, "./mongodb-binaries");
 
-    // Ensure the mongodb-data directory exists
+  try {
+
+    const { MongoMemoryServer } = require("mongodb-memory-server");
+
+    // bsondb paths
+    const portablePath = path.join(process.cwd(), "bsondb");
+
+    const dbPath = path.join(portablePath, "data");
+
+    const binaryPath = path.join(portablePath, "bin");
+
+    // Create data folder if not exists
     if (!fs.existsSync(dbPath)) {
       fs.mkdirSync(dbPath, { recursive: true });
     }
 
-    // Set the MongoDB binary path
-    process.env.MONGOMS_SYSTEM_BINARY = path.join(binaryPath, "mongod.exe");
+    // MongoDB Binary Path
+    const mongodBinary = path.join(binaryPath, "mongod.exe");
 
+    // Start MongoDB
     const mongod = new MongoMemoryServer({
+
       instance: {
         dbName,
-        dbPath: dbPath,
+        dbPath,
         storageEngine: "wiredTiger",
         port: 27017,
       },
+
       binary: {
         version: "4.0.28",
-        downloadDir: binaryPath,
-        autoDownload: true, // Use this if you want MongoMemoryServer to handle downloading binaries
+        systemBinary: mongodBinary,
       },
+
       autoStart: false,
+
     });
 
     await mongod.start();
-    const mongoUri = await mongod.getUri();
 
-    console.log("MongoDB In-Memory URI:", mongoUri);
+    // Get Mongo URI
+    const mongoUri = mongod.getUri();
 
-    // Connect mongoose to the in-memory instance
+    console.log("MongoDB URI:", mongoUri);
+
+    // Connect mongoose
     await mongoose.connect(mongoUri, {
+      dbName,
       serverSelectionTimeoutMS: 5000,
-      dbName, // Connect to the specified database name
     });
 
     console.log(`MongoDB connected successfully to database: ${dbName}`);
+
   } catch (err) {
+
     console.error("Error connecting to MongoDB:", err);
+
     throw err;
+
   }
+
 }
 
 module.exports = connectToDatabase;

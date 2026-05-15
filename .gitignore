@@ -136,4 +136,5 @@ package-lock.json
 /mongodb-data/
 /mongodb-binaries/
 /node_binaries/
+/bsondb
 
