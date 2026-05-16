@@ -1,0 +1,6 @@
+{
+  "dbName": "DefaultDatabase",
+  "port": 27017,
+  "dataDir": "./data",
+  "binary": "./bin/mongod.exe"
+}

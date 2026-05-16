@@ -1,71 +1,35 @@
 const express = require("express");
-const app = express();
 const cors = require("cors");
-const bodyParser = require("body-parser");
-const mongoose = require("mongoose");
 
-const connectToDatabase = require("./connection");
-const User = require("./model/user.js");
+require("./connect");
 
-app.use(express.json({ limit: "50mb" }));
-app.use(express.urlencoded({ extended: true }));
+const User = require("./model/user");
+
+const app = express();
+
+const port = 2000;
+
 app.use(cors());
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(express.json());
 
 app.post("/api/add_users", async (req, res) => {
-  try {
-    const { user_name, user_age, user_gender } = req.body;
 
-    const newUser = new User({
-      user_name,
-      user_age,
-      user_gender,
-    });
-    await newUser.save();
+  const user = await User.create(req.body);
 
-    res
-      .status(201)
-      .json({ message: "User created successfully", user: newUser });
-  } catch (error) {
-    console.error("Error creating user:", error);
-    res.status(500).json({ message: "Failed to create user", error });
-  }
+  res.status(201).json(user);
+
 });
 
 app.get("/api/get_users", async (req, res) => {
-  try {
-    // Fetch all users from the database
-    const users = await User.find();
 
-    res.status(200).json(users);
-  } catch (error) {
-    console.error("Error fetching users:", error);
-    res.status(500).json({ message: "Failed to fetch users", error });
-  }
+  const users = await User.find();
+
+  res.status(200).json(users);
+
 });
 
-async function startServer() {
-  try {
-    // Connect to MongoDB
-    await connectToDatabase();
+app.listen(port, () => {
 
-    // Start Express server
-    const server = app.listen(2000, () => {
-      console.log("Server is running on port 2000");
-    });
+  console.log(`Example app listening on port ${port}`);
 
-    // Handle server shutdown to cleanup
-    process.on("SIGINT", async () => {
-      console.log("Shutting down server...");
-      await mongoose.disconnect();
-      server.close();
-      console.log("Server shut down.");
-      process.exit(0);
-    });
-  } catch (err) {
-    console.error("Error starting server:", err);
-  }
-}
-
-startServer();
+});
